@@ -44,7 +44,7 @@ export default function Hero() {
         className="mt-10 flex gap-4"
       >
         <a
-          href="#project"
+          href="#projects"
           className="px-6 py-3 rounded-2xl bg-violet-600 text-white font-medium shadow-md hover:bg-violet-700 transition"
         >
           View Projects
