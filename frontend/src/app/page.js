@@ -6,6 +6,7 @@ import About from "../components/About";
 import Projects from "../components/Project";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import Certificates from "../components/Certificates";
 
 
 
@@ -17,10 +18,11 @@ export default function Home() {
      <Hero/>
      <About/>
      <Skills/>
-     <Projects/> 
+     <Projects/>
+     <Certificates/>
      <Contact/>
-     <Footer/> 
-  
+     <Footer/>
+
     </div>
   );
 }

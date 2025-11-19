@@ -15,15 +15,15 @@ const projects = [
     title: "Excel Analyzer App",
     description: "A web application to analyze Excel sheets with role-based access and dashboards.",
     image: "/excel.png", // Ensure this image is in the public folder
-    github: "https://github.com/yourusername/excel-analyzer",
+    github: "https://github.com/Akhilkumar4464/frontend-excel",
     demo: "https://excel-analyzer-demo.com",
   },
   {
     title: "E-Commerce Platform",
     description: "A full-stack e-commerce platform with product listings, cart, and secure checkout.",
     image: "/store.png", // Ensure this image is in the public folder
-    github: "https://github.com/yourusername/ecommerce",
-    demo: "https://ecommerce-demo.com",
+    github: "https://github.com/Akhilkumar4464/PRO_Ecommerce",
+    demo: "https://pro-ecommerce-theta.vercel.app/",
   },
 ];
 
