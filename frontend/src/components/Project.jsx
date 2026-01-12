@@ -14,7 +14,7 @@ const projects = [
   {
     title: "Excel Analyzer App",
     description: "A web application to analyze Excel sheets with role-based access and dashboards.",
-    image: "/excel.png", // Ensure this image is in the public folder
+    image: "/excelpn.png", // Ensure this image is in the public folder
     github: "https://github.com/Akhilkumar4464/frontend-excel",
     demo: "https://excel-analyzer-demo.com",
   },
@@ -25,6 +25,13 @@ const projects = [
     github: "https://github.com/Akhilkumar4464/PRO_Ecommerce",
     demo: "https://pro-ecommerce-theta.vercel.app/",
   },
+  {
+     title: "Freelance-platform By Akhil",
+    description: "A full-stack freelance project that helps freshers to find work through freelancing and client find experienced devs on this platform",
+    image: "/ff.png", // Ensure this image is in the public folder
+    github: "https://github.com/Akhilkumar4464/freelance-platform",
+    demo: "https://google.com",
+  }
 ];
 
 export default function Projects() {
