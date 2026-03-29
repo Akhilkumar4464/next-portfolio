@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, X } from "lucide-react";
+import { staggerContainer, bounceItem, textVariant } from "../utils/animations";
 
 const certificates = [
   {
@@ -39,9 +40,9 @@ const Certificates = () => {
     >
       <div className="container mx-auto px-4">
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={textVariant}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
           className="text-3xl md:text-4xl font-bold text-center mb-14 text-gray-900"
         >
@@ -49,10 +50,17 @@ const Certificates = () => {
         </motion.h2>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
           {certificates.map((cert, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={bounceItem}
               className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-6 shadow-2xl transition-all duration-300 hover:bg-white/20 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(255,255,255,0.2)]"
             >
               {/* Image */}
@@ -84,27 +92,29 @@ const Certificates = () => {
                 View Credential
                 <ExternalLink size={18} />
               </a>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Fullscreen Modal */}
-      {selectedImage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50"
-          onClick={() => setSelectedImage(null)}
-        >
+      <AnimatePresence>
+        {selectedImage && (
           <motion.div
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0.8 }}
-            className="relative max-w-4xl w-full mx-4"
-            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50"
+            onClick={() => setSelectedImage(null)}
           >
+            <motion.div
+              initial={{ scale: 0.5, y: 100, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.8, y: 50, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative max-w-4xl w-full mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
             {/* Close Button */}
             <button
               onClick={() => setSelectedImage(null)}
@@ -121,9 +131,10 @@ const Certificates = () => {
               height={800}
               className="rounded-xl shadow-2xl w-full h-auto"
             />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
     </section>
   );
 };

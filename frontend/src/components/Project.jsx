@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
+import { staggerContainer, bounceItem, textVariant } from "../utils/animations";
 
 // Projects.jsx (Next.js version)
 // - Uses next/image for optimized images
@@ -41,24 +42,28 @@ export default function Projects() {
       className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-white"
     >
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        variants={textVariant}
+        initial="hidden"
+        whileInView="show"
         viewport={{ once: true }}
         className="text-3xl md:text-4xl font-bold text-gray-900 mb-14 text-center"
       >
         My <span className="text-violet-600">Projects</span>
       </motion.h2>
 
-      <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <motion.div 
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        className="max-w-6xl mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-3"
+      >
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
+            variants={bounceItem}
+            whileHover={{ y: -10, scale: 1.02, transition: { type: "spring", stiffness: 300 } }}
+            className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all cursor-pointer border border-gray-100/50"
           >
             <div className="w-full h-48 relative">
               <Image
@@ -95,7 +100,7 @@ export default function Projects() {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

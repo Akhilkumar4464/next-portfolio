@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Code, Database, Globe, Smartphone } from "lucide-react";
+import { staggerContainer, bounceItem, hoverBounce, textVariant } from "../utils/animations";
 
 // Skills.jsx
 // - Tailwind-based skills section
@@ -38,31 +39,40 @@ export default function Skills() {
       className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-violet-50"
     >
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        variants={textVariant}
+        initial="hidden"
+        whileInView="show"
         viewport={{ once: true }}
         className="text-3xl md:text-4xl font-bold text-gray-900 mb-14 text-center"
       >
         My <span className="text-violet-600">Skills</span>
       </motion.h2>
 
-      <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <motion.div 
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        className="max-w-6xl mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-4"
+      >
         {skills.map((skill, index) => (
           <motion.div
             key={skill.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition"
+            variants={bounceItem}
+            whileHover={hoverBounce}
+            className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer transition-shadow hover:shadow-xl"
           >
-            {skill.icon}
+            <motion.div 
+              whileHover={{ rotate: [0, -10, 10, -10, 10, 0], transition: { duration: 0.5 } }}
+              className="mb-2"
+            >
+              {skill.icon}
+            </motion.div>
             <h3 className="mt-4 text-lg font-semibold text-gray-800">{skill.title}</h3>
             <p className="mt-2 text-gray-600 text-sm leading-relaxed">{skill.description}</p>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

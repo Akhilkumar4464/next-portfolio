@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { staggerContainer, slideSpringFromRight } from "../utils/animations";
 
 const links = [
   { id: "home", label: "Home" },
@@ -79,19 +80,26 @@ return (
         >
           Akhil Kumar
         </h1>
-        <nav className="hidden sm:flex gap-6" aria-label="Main navigation">
+        <nav className="hidden sm:flex gap-2 relative" aria-label="Main navigation">
           {links.map((link) => (
             <button
               key={link.id}
               onClick={() => handleNavClick(link.id)}
               aria-current={active === link.id ? "page" : undefined}
-              className={`transition-colors ${
+              className={`relative px-4 py-2 transition-colors z-10 ${
                 active === link.id
-                  ? "text-violet-600 font-semibold"
+                  ? "text-violet-700 font-semibold"
                   : "text-gray-700 hover:text-violet-500"
               }`}
               type="button"
             >
+              {active === link.id && (
+                <motion.div
+                  layoutId="activeNavIndicator"
+                  className="absolute inset-0 bg-violet-100 rounded-full -z-10"
+                  transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                />
+              )}
               {link.label}
             </button>
           ))}
@@ -125,9 +133,16 @@ return (
             <X size={22} />
           </button>
         </div>
-        <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
+        <motion.nav 
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+          className="flex flex-col gap-4" 
+          aria-label="Mobile navigation"
+        >
           {links.map((link) => (
-            <button
+            <motion.button
+              variants={slideSpringFromRight}
               key={link.id}
               onClick={() => handleNavClick(link.id)}
               aria-current={active === link.id ? "page" : undefined}
@@ -139,9 +154,9 @@ return (
               type="button"
             >
               {link.label}
-            </button>
+            </motion.button>
           ))}
-        </nav>
+        </motion.nav>
       </div>
     </motion.div>
   </>

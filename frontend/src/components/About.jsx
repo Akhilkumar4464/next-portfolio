@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
- 
+import { textVariant, slideSpringFromLeft, slideSpringFromRight } from "../utils/animations";
 
 // About.jsx
 // - Tailwind-based About Me section
@@ -15,9 +15,9 @@ export default function About() {
       className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-white"
     >
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        variants={textVariant}
+        initial="hidden"
+        whileInView="show"
         viewport={{ once: true }}
         className="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center"
       >
@@ -27,25 +27,26 @@ export default function About() {
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* Profile image */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          variants={slideSpringFromLeft}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
           className="flex justify-center"
         >
-          <img
+          <motion.img
+            whileHover={{ scale: 1.05, rotate: -2, transition: { type: "spring", stiffness: 300 } }}
             src="/akhil.jpg"
             alt="Profile"
-            className="w-64 h-64 rounded-2xl object-cover shadow-md"
+            className="w-64 h-64 rounded-2xl object-cover shadow-xl cursor-pointer"
           />
         </motion.div>
 
         {/* Bio content */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
+          variants={slideSpringFromRight}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
         >
           <p className="text-gray-600 text-lg leading-relaxed mb-6">
             Hello! I'm <span className="font-semibold">Akhil Kumar </span>, a passionate
