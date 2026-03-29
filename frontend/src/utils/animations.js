@@ -55,6 +55,20 @@ export const slideSpringFromRight = {
   },
 };
 
+export const slideUpFade = {
+  hidden: { opacity: 0, y: 60 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 150,
+      damping: 20,
+      mass: 1,
+    },
+  },
+};
+
 // Text word-by-word stagger
 export const textVariant = {
   hidden: { opacity: 0, y: 30 },
@@ -79,6 +93,16 @@ export const hoverBounce = {
   },
 };
 
+export const hoverLift = {
+  y: -10,
+  scale: 1.02,
+  boxShadow: "0px 20px 30px rgba(0, 0, 0, 0.1)",
+  transition: {
+    type: "spring",
+    stiffness: 300,
+  },
+};
+
 // Magnetic effect (slight rotate and scale)
 export const hoverMagnetic = {
   scale: 1.05,
@@ -87,4 +111,18 @@ export const hoverMagnetic = {
     duration: 0.4,
     ease: "easeInOut",
   },
+};
+
+// Pulse glow for CTA
+export const pulseGlow = {
+  boxShadow: [
+    "0px 0px 0px 0px rgba(139, 92, 246, 0)",
+    "0px 0px 20px 5px rgba(139, 92, 246, 0.5)",
+    "0px 0px 0px 0px rgba(139, 92, 246, 0)"
+  ],
+  transition: {
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut"
+  }
 };
