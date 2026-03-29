@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gray-900 border-t border-gray-800 text-gray-300 py-12 px-4 sm:px-6 mt-10">
+    <footer className="w-full bg-gray-900 border-t border-gray-800 text-gray-300 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Copyright */}
         <div className="flex items-center gap-2 flex-col md:flex-row">
