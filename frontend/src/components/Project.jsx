@@ -13,12 +13,12 @@ const projects = [
     image: "/excelpn.png",
     github: "https://github.com/Akhilkumar4464/DataVision-Ai",
     demo: "https://data-vision-ai-zeta.vercel.app/",
-    tags: ["React", "Node.js", "Chart.js"],
+    tags: ["Next.js","Mongodb","typescript", "Node.js", "Chart.js"],
   },
   {
     title: "GetYourDestination",
-    description: "A full-stack e-commerce platform with product listings, a robust cart system, and secure checkout capabilities.",
-    image: "/store.png",
+    description: "A tool that provides personalized resume recommendations based on job descriptions , self description using AI.",
+    image: "/getyourDestination.png",
     github: "https://github.com/Akhilkumar4464/GetYourDestination",
     demo: "https://get-your-destination-8qb3.vercel.app/login",
     tags: ["MongoDb", "Express", "React", "Node.js"],
@@ -26,10 +26,10 @@ const projects = [
   {
     title: "Daily-Hunt",
     description: "A dual-sided marketplace tailored for software freelancers and tech clients to connect successfully securely.",
-    image: "/ff.png",
+    image: "/daily-Hunt.png",
     github: "https://github.com/Akhilkumar4464/Daily-Hunt-",
     demo: "https://daily-hunt-2ftg.vercel.app/",
-    tags: ["MERN Stack", "Tailwind", "Socket.io"],
+    tags: ["Next.js","Mongodb","typeScipt","TailwindCSS"],
   }
 ];
 
