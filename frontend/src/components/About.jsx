@@ -39,7 +39,7 @@ export default function About() {
           
           <motion.img
             whileHover={{ scale: 1.02, transition: { type: "spring", stiffness: 300 } }}
-            src="/akhil.jpg"
+            src="/profileforwebsite.jpeg"
             alt="Profile"
             className="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl object-cover shadow-[0_10px_40px_rgba(0,0,0,0.1)] cursor-pointer relative z-10 border-4 border-white transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(124,58,237,0.2)]"
           />
