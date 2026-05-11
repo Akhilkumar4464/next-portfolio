@@ -8,27 +8,27 @@ import { staggerContainer, slideUpFade, textVariant, hoverLift } from "../utils/
 // Projects.jsx (Next.js version)
 const projects = [
   {
-    title: "Excel Analyzer App",
+    title: "DataVision-AI",
     description: "A web application to analyze Excel sheets with role-based access and interactive dashboards.",
     image: "/excelpn.png",
-    github: "https://github.com/Akhilkumar4464/frontend-excel",
-    demo: "https://excel-analyzer-demo.com",
+    github: "https://github.com/Akhilkumar4464/DataVision-Ai",
+    demo: "https://data-vision-ai-zeta.vercel.app/",
     tags: ["React", "Node.js", "Chart.js"],
   },
   {
-    title: "E-Commerce Platform",
+    title: "GetYourDestination",
     description: "A full-stack e-commerce platform with product listings, a robust cart system, and secure checkout capabilities.",
     image: "/store.png",
-    github: "https://github.com/Akhilkumar4464/PRO_Ecommerce",
-    demo: "https://pro-ecommerce-theta.vercel.app/",
-    tags: ["Next.js", "MongoDB", "Stripe"],
+    github: "https://github.com/Akhilkumar4464/GetYourDestination",
+    demo: "https://get-your-destination-8qb3.vercel.app/login",
+    tags: ["MongoDb", "Express", "React", "Node.js"],
   },
   {
-    title: "Freelance Platform",
+    title: "Daily-Hunt",
     description: "A dual-sided marketplace tailored for software freelancers and tech clients to connect successfully securely.",
     image: "/ff.png",
-    github: "https://github.com/Akhilkumar4464/freelance-platform",
-    demo: "https://google.com",
+    github: "https://github.com/Akhilkumar4464/Daily-Hunt-",
+    demo: "https://daily-hunt-2ftg.vercel.app/",
     tags: ["MERN Stack", "Tailwind", "Socket.io"],
   }
 ];
@@ -54,7 +54,7 @@ export default function Projects() {
         </p>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -85,12 +85,12 @@ export default function Projects() {
               {/* Subtle gradient overlay to push image forward */}
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
-            
+
             <div className="p-6 md:p-8 flex flex-col flex-grow">
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 font-heading group-hover:text-violet-600 transition-colors duration-300">
                 {project.title}
               </h3>
-              
+
               <div className="flex flex-wrap gap-2 mt-3 mb-4">
                 {project.tags?.map((tag) => (
                   <span key={tag} className="px-3 py-1 bg-violet-50 text-violet-700 text-xs font-semibold rounded-full border border-violet-100">
@@ -98,11 +98,11 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              
+
               <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
                 {project.description}
               </p>
-              
+
               <div className="flex items-center justify-between gap-4 mt-auto border-t border-gray-100 pt-5">
                 <a
                   href={project.github}

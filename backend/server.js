@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
@@ -36,12 +37,32 @@ app.post('/contact', async (req, res) => {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
+    // Save to database
     const newContact = new Contact({ name, email, message });
     await newContact.save();
 
+    // Set up Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'niteshsharma4464@gmail.com',
+      subject: `New Contact Form Submission from ${name}`,
+      text: `Someone wants to talk with you!\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+
     res.status(201).json({ success: true, message: 'Contact form submitted successfully' });
   } catch (error) {
-    console.error('Error saving contact:', error);
+    console.error('Error saving contact or sending email:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
